@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Takeoff</title>
+    <script th:src="@{/takeoff.js}"></script>
+</head>
+<body>
+    <h1>New Takeoff</h1>
+    <form th:action="@{/newTakeoff}" th:object="${takeoff}" method="post">
+        <h2>Customer Information</h2>
+        <label for="customerPhone">Phone Number:</label>
+        <input type="text" id="customerPhone" th:field="*{customerPhone}" required>
+        <br>
+        <label for="customerName">Name:</label>
+        <input  type="text" id="customerName" th:field="*{customerFirstName}">
+        <!--Additional customer feilds here-->
+
+        <h2>Job Type</h2>
+        <select id="jobType" th:field="*{jobType}" required onchange="updateSeletions()">
+            <option value="Retro">Retro</option>
+            <option value="NewConstruction">New Construction</option>
+            <option value="Commercial">Commercial</option>
+        </select>
+
+        <h2>Products</h2>
+        <div id="productOptions">
+
+        </div>
+
+        <br>
+        <button type="submit">New Takeoff</button>
+
+    </form>
+</body>
+</html>
