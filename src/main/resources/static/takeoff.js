@@ -1,26 +1,44 @@
 function updateProducts() {
-    const jobType = document.getElementById('jobType').value;
-    const selectionDiv = document.getElementById('selectionOptions');
-    selectionDiv.innerHTML = ''; // Clear previous options
+    console.log('updateProducts function called');
+    const jobType = document.getElementById('jobType');
+    const productDiv = document.getElementById('productOptions');
 
-    if (jobType === 'Retro') {
-        selectionDiv.innerHTML = `
+    if (!jobType) {
+        console.error('Job Type select element not found');
+        return;
+    }
+
+    if (!productDiv) {
+        console.error('Product Options div not found');
+        return;
+    }
+
+    const selectedJobType = jobType.value;
+    console.log('Selected job type:', selectedJobType);
+
+    productDiv.innerHTML = ''; // Clear previous options
+
+    if (selectedJobType === 'Retro') {
+        productDiv.innerHTML = `
             <select name="product" required>
+                <option value="">Select a product</option>
                 <option value="Windows">Windows</option>
                 <option value="Doors">Doors</option>
                 <option value="Other">Other</option>
             </select>
         `;
-    } else if (jobType === 'NewConstruction') {
-        selectionDiv.innerHTML = `
+    } else if (selectedJobType === 'NewConstruction') {
+        productDiv.innerHTML = `
             <select name="product" required>
+                <option value="">Select a product</option>
                 <option value="Residential">Residential</option>
                 <option value="Commercial">Commercial</option>
             </select>
         `;
-    } else if (jobType === 'Commercial') {
-        selectionDiv.innerHTML = `
+    } else if (selectedJobType === 'Commercial') {
+        productDiv.innerHTML = `
             <select name="product" required>
+                <option value="">Select a product</option>
                 <option value="Office">Office</option>
                 <option value="Retail">Retail</option>
                 <option value="Industrial">Industrial</option>
@@ -29,14 +47,14 @@ function updateProducts() {
     }
 }
 
-// Add an event listener when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded event fired');
     const jobTypeSelect = document.getElementById('jobType');
     if (jobTypeSelect) {
         jobTypeSelect.addEventListener('change', updateProducts);
-        // Initialize the selections
+        // Initialize the products based on the default value
         updateProducts();
-    }else{
+    } else {
         console.error('Job Type select element not found');
     }
 });

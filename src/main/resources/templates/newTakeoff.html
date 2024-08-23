@@ -12,9 +12,27 @@
         <label for="customerPhone">Phone Number:</label>
         <input type="text" id="customerPhone" th:field="*{customerPhone}" required>
         <br>
-        <label for="customerName">Name:</label>
-        <input  type="text" id="customerName" th:field="*{customerFirstName}">
-        <!--Additional customer feilds here-->
+        <label for="customerFirstName">First Name:</label>
+        <input  type="text" id="customerFirstName" th:field="*{customerFirstName}">
+        <br>
+        <label for="customerLastName">Last Name:</label>
+        <input type="text" id="customerLastName" th:field="*{customerLastName}">
+        <br>
+        <h5>Address</h5>
+        <label for="customerAddressLine1">Line 1:</label>
+        <input type="text" id="customerAddressLine1" th:field="*{customerAddressLine1}">
+        <br>
+        <label for="customerAddressLine2">Line 2:</label>
+        <input type="text" id="customerAddressLine2" th:field="*{customerAddressLine2}">
+        <br>
+        <label for="customerCity">City:</label>
+        <input type="text" id="customerCity" th:field="*{customerCity}">
+        <br>
+        <label for="customerState">State:</label>
+        <input type="text" id="customerState" th:field="*{customerState}">
+        <br>
+        <label for="customerZip">Zip Code</label>
+        <input type="text" id="customerZip" th:field="*{customerZip}">
 
         <h2>Job Type</h2>
         <select id="jobType" th:field="*{jobType}" required onchange="updateSeletions()">
