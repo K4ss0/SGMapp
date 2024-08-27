@@ -1,7 +1,9 @@
 package com.StanGreerMillworks.SGMapp.DTO;
 
 public class TakeoffDTO {
-    private String customerPhone;
+    private String customerId;
+    private String customerPhone1;
+    private String customerPhone2;
     private String customerFirstName;
     private String customerLastName;
     private String customerAddressLine1;
@@ -13,12 +15,28 @@ public class TakeoffDTO {
     private String jobType;
     private String jobSelection;
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCustomerPhone1() {
+        return customerPhone1;
+    }
+
+    public void setCustomerPhone1(String customerPhone1) {
+        this.customerPhone1 = customerPhone1;
+    }
+
+    public String getCustomerPhone2() {
+        return customerPhone2;
+    }
+
+    public void setCustomerPhone2(String customerPhone2) {
+        this.customerPhone2 = customerPhone2;
     }
 
     public String getCustomerFirstName() {

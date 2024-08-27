@@ -58,3 +58,45 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Job Type select element not found');
     }
 });
+
+
+function searchCustomer() {
+    const phone1 = document.getElementById('customerPhone').value;
+    const phone2 = document.getElementById('customerPhone').value;
+
+    fetch(`/api/customer/search?phoneNumber=${phone1}`)
+        .then(respones =>{
+            if (!response.ok){
+                return fetch('/api/customer/search?phoneNumber=${phone2}');
+            }
+            return response;
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                // Customer found, populate fields
+                document.getElementById('customerFirstName').value = data.firstName;
+                document.getElementById('customerLastName').value = data.lastName;
+                document.getElementById('customerEmail').value = data.email;
+                document.getElementById('customerAddress').value = data.address;
+                document.getElementById('customerCity').value = data.city;
+                document.getElementById('customerState').value = data.state;
+                document.getElementById('customerZip').value = data.zip;
+            } else {
+                // Customer not found
+                alert('Customer not found. Please enter new customer information.');
+                // Clear fields except phone number
+                document.getElementById('customerFirstName').value = '';
+                document.getElementById('customerLastName').value = '';
+                document.getElementById('customerEmail').value = '';
+                document.getElementById('customerAddress').value = '';
+                document.getElementById('customerCity').value = '';
+                document.getElementById('customerState').value = '';
+                document.getElementById('customerZip').value = '';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while searching for the customer.');
+        });
+}
