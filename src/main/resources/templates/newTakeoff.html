@@ -10,10 +10,10 @@
     <form th:action="@{/newTakeoff}" th:object="${takeoff}" method="post">
         <h2>Customer Information</h2>
         <label for="customerPhone1">Primary Phone Number:</label>
-        <input type="text" id="customerPhone1" th:field="*{customerPhone1}" required>
+        <input type="text" id="customerPhone1" maxlength="12" oninput="formatPhoneNumber(this)" th:field="*{customerPhone1}" required>
         <br>
         <label for="customerPhone2">Secondary Phone Number</label>
-        <input type="text" id="customerPhone2" th:field="*{customerPhone2}">
+        <input type="text" id="customerPhone2" maxlength="12" oninput="formatPhoneNumber(this)" th:field="*{customerPhone2}">
         <button type="button" onclick="seachCustomer">Search</button>
         <br>
         <label for="customerFirstName">First Name:</label>

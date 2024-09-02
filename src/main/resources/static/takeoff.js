@@ -100,3 +100,13 @@ function searchCustomer() {
             alert('An error occurred while searching for the customer.');
         });
 }
+
+function formatPhoneNumber(input){
+    let value = input.value.replace(/\D/g,'');
+    if (value.length > 3&& value.length <= 6){
+        value = value.replace(/^(\d{3)(\d+)/, '$1-$2');
+    } else if (value.length > 6) {
+        value = value.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
+    }
+    input.value = value;
+}

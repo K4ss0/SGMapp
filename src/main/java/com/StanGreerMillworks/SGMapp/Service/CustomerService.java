@@ -3,6 +3,7 @@ package com.StanGreerMillworks.SGMapp.Service;
 import com.StanGreerMillworks.SGMapp.DTO.CustomerDTO;
 import com.StanGreerMillworks.SGMapp.domain.Customer;
 import com.StanGreerMillworks.SGMapp.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.Optional;
 @Service
 public class CustomerService {
 
+    @Autowired
     private final CustomerRepository customerRepository;
 
     public CustomerService(CustomerRepository customerRepository) {
@@ -22,7 +24,10 @@ public class CustomerService {
     }
 
     private CustomerDTO convertToDTO(Customer customer){
-
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setPhone1(customer.getPhone1());
+        customerDTO.setPhone2(customer.getPhone2());
+        return customerDTO;
     }
 
     public Customer saveOrUpdateCustomer(CustomerDTO customerDTO){
