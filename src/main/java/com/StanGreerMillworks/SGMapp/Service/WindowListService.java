@@ -20,24 +20,24 @@ public class WindowListService {
     @Autowired
     private SpecificWindowInfoRepository specificWindowInfoRepository;
 
-    public List<WindowListDTO> getWindowList(){
+    public List<WindowListDTO> getWindowList() {
         List<GeneralWindowInfo> generalInfoList = generalWindowInfoRepository.findAll();
         List<SpecificWindowInfo> specificInfoList = specificWindowInfoRepository.findAll();
 
-        List<WindowListDTO> winddowList = new ArrayList<>();
+        List<WindowListDTO> windowList = new ArrayList<>();
 
         for (GeneralWindowInfo generalInfo : generalInfoList) {
+            List<SpecificWindowInfo> specificWindowInfoList = specificWindowInfoRepository.findByGeneralWindowInfo(generalInfo);
             for (SpecificWindowInfo specificInfo : specificInfoList) {
-                if (generalInfo.getId().equals(specificInfo.getGeneralWindowInfoId())){
-                    WindowListDTO item = new WindowListDTO();
-                    item.setBrand(generalInfo.getBrand());
-                    item.setSeriesType(generalInfo.getSeriesType());
-                    item.setColor(generalInfo.getColor());
-                    // add additional items for window list here
-                    windowList.add(item)
-                }
+                WindowListDTO item = new WindowListDTO();
+                item.setBrand(generalInfo.getBrand());
+                item.setSeries(generalInfo.getSeries());
+                item.setColor(generalInfo.getColor());
+                // add additional items for window list here
+                windowList.add(item);
             }
         }
-        return winddowList;
+        return windowList;
     }
+
 }
