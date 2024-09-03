@@ -25,6 +25,10 @@ public class SpecificWindowInfo {
     @JoinColumn(name = "takeoff_id")
     private TakeoffForm takeoffForm;
 
+    @ManyToOne
+    @JoinColumn(name = "general_window_info_id")
+    private GeneralWindowInfo generalWindowInfo;
+
     public Long getWindowId() {
         return windowId;
     }
@@ -128,6 +132,15 @@ public class SpecificWindowInfo {
     public void setTakeoffForm(TakeoffForm takeoffForm) {
         this.takeoffForm = takeoffForm;
     }
+
+    public GeneralWindowInfo getGeneralWindowInfo() {
+        return generalWindowInfo;
+    }
+
+    public void setGeneralWindowInfo(GeneralWindowInfo generalWindowInfo) {
+        this.generalWindowInfo = generalWindowInfo;
+    }
+
 }
 
 
