@@ -46,6 +46,6 @@ public class NewTakeoffController {
         takeoff.setCustomerId(customer.getId());
         String takeoffNumber= takeoffService.saveTakeoff(takeoff);
         redirectAttributes.addFlashAttribute("takeoffNumber", takeoffNumber);
-        return "redirect:/windowInformation";
+        return "redirect:/window-information";
     }
 }
