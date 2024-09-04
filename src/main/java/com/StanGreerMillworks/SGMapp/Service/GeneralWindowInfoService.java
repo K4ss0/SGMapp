@@ -9,14 +9,15 @@ import java.util.List;
 
 @Service
 public class GeneralWindowInfoService {
+
     @Autowired
-    GeneralWindowInfoRepository generalWindowInfoRepository;
+    private GeneralWindowInfoRepository generalWindowInfoRepository;
 
     public List<GeneralWindowInfo> getAllGeneralWindowInfo() {
         return generalWindowInfoRepository.findAll();
     }
 
     public GeneralWindowInfo saveGeneralWindowInfo(GeneralWindowInfo generalWindowInfo) {
-        return generalWindowInfo.save(generalWindowInfo);
+        return generalWindowInfoRepository.save(generalWindowInfo);
     }
 }

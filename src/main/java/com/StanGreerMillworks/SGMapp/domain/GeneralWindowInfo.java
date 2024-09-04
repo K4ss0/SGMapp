@@ -74,7 +74,6 @@ public class GeneralWindowInfo {
         this.takeoffForm = takeoffForm;
     }
 
-    public GeneralWindowInfo save(GeneralWindowInfo generalWindowInfo) {
-    }
+
 }
 

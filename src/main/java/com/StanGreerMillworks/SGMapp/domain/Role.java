@@ -1,4 +1,10 @@
+/*
 package com.StanGreerMillworks.SGMapp.domain;
 
-public class Role {
+import jakarta.persistence.Entity;
+
+@Entity
+public class Role
+{
 }
+*/
