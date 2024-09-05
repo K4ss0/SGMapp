@@ -7,16 +7,18 @@ document.addEventListener('DOMContentLoaded', function () {
         tabs.forEach(tab => tab.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
 
-        document.getElementById(subtabId).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
         event.currentTarget.classList.add('active');
     }
 
+    // Add event listeners for tab switching
     tabs.forEach(tab => {
         tab.addEventListener('click', function (event) {
             openTab(event, this.getAttribute('data-tab'));
         });
     });
 
+    // Set the first tab and content as active initially
     document.querySelector('.subtablink').classList.add('active');
     document.querySelector('.subtabcontent').classList.add('active');
 

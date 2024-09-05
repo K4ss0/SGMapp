@@ -1,88 +1,71 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.tab-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.tabs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: #f1f1f1;
-}
-
-.tablink {
-    flex: 1;
-    background-color: #ccc;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-}
-
-.tablink.active {
-    background-color: #106;
-    color: blue;
-}
-
-.tabcontent {
-    display: none;
+.customer-info {
     padding: 20px;
     background-color: #f9f9f9;
+    border-bottom: 2px solid #ddd;
 }
 
-.tabcontent.active {
-    display: block;
+.sub-tab-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-.sub-tab-container{
-    margin-top: 20px;
-}
-.subtablink{
-    background-color: #106;
-    border: none;
+.subtablink {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
     cursor: pointer;
-    padding: 10px;
-    margin-right: 5px;
-    border-radius: 4px;
+    background-color: #f1f1f1;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
 }
-.subtablink.active{
-    background-color: #aaa;
-    font-weight: bold;
+
+.subtablink:hover,
+.subtablink.active {
+    background-color: #ddd;
 }
-.subtabcontent{
+
+.tab-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.subtabcontent {
     display: none;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 10px;
 }
-.subtabcontent.active{
+
+/* Active tab content */
+.subtabcontent.active {
     display: block;
 }
 
-.scrollable {
-    max-height: calc(100vh - 100px); /* Adjust for header height */
-    overflow-y: auto;
-}
-
-@media screen and (min-width: 768px) {
-    .tabs {
+/* Larger Screen: Display the tabs in 3 columns */
+@media (min-width: 768px) {
+    .tab-content-container {
         flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .subtabcontent {
+        width: 32%; /* Split into thirds */
+        display: block;
     }
 }
 
-/* Fixed Customer Info Section */
-.fixed-customer-info {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 1000;
+/* Mobile Layout: Only show one tab at a time */
+@media (max-width: 767px) {
+    .subtabcontent.active {
+        display: block;
+        width: 100%;
+    }
 }
-
-.content-below-fixed {
-    margin-top: 50px; /* Adjust based on the fixed header height */
-}
-
