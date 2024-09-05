@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.tab-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #f1f1f1;
+}
+
+.tablink {
+    flex: 1;
+    background-color: #ccc;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.tablink.active {
+    background-color: #106;
+    color: blue;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.sub-tab-container{
+    margin-top: 20px;
+}
+.subtablink{
+    background-color: #106;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+.subtablink.active{
+    background-color: #aaa;
+    font-weight: bold;
+}
+.subtabcontent{
+    display: none;
+}
+.subtabcontent.active{
+    display: block;
+}
+
+.scrollable {
+    max-height: calc(100vh - 100px); /* Adjust for header height */
+    overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .tabs {
+        flex-direction: row;
+    }
+}
+
+/* Fixed Customer Info Section */
+.fixed-customer-info {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+.content-below-fixed {
+    margin-top: 50px; /* Adjust based on the fixed header height */
+}
+

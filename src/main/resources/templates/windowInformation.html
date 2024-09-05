@@ -3,181 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <title>Window Information</title>
+    <link rel="stylesheet" href="/windowInfo.css">
 </head>
 <body>
-<h1>Window Information</h1>
-<p>Takeoff Number <span th:text="${takeoffNumber}"></span></p>
-<p>Cutomer Info: <span th:text="${custoemrName}"><!--dynamically insert customer name--></span><p>
-<div class="tab-container">
-    <div class="tabs">
-        <button class="tablink active" onclick="openTab(event, 'Generalinfo')">General Window Information</button>
-        <button class="tablink" onclick="openTab(event,'SpecificWindowInfo')">Specific Window Information</button>
-        <button class="tablink" onclick="openTab(event, 'WindowList')">Review Windows</button>
-    </div>
-    <h1>General Information</h1>
-    <!--This section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
-    <div id="GeneralInfo" class="tabcontent active">
-        <form>
-            <label for="window-brands">Choose a brand:</label>
-            <select id="window-brands" name="window-brands" required>
-                <option value="">--Select a brand--</option>
-                <option value="brand1">Brand 1</option>
-                <option value="brand2">Brand 2</option>
-                <option value="brand3">Brand 3</option>
-            </select>
+<script src="/windowInfo.js"></script>
+<div class="fixed-customer-info">
+    <h1>Window Information</h1>
+    <h2>Customer Info</h2>
+    <p>Takeoff Number <span th:text="${takeoffNumber}"></span></p>
+    <p>Cutomer Info: <span th:text="${customerName}"><!--dynamically insert customer name--></span></p>
+</div>
+<div class="content-below-fixed">
+    <div class="sub-tab-container">
+        <button class="subtablink" data-tab ="Generalinfo">General Window Information</button>
+        <button class="subtablink" data-tab="SpecificWindowInfo">Specific Window Information</button>
+        <button class="subtablink" data-tab="WindowList">Review Windows</button>
+        <h1>General Information</h1>
+        <!--This section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
+        <div id="GeneralInfo" class="subtabcontent active">
+            <form>
+                <label for="window-brands">Choose a brand:</label>
+                <select id="window-brands" name="window-brands" required>
+                    <option value="">--Select a brand--</option>
+                    <option value="brand1">Brand 1</option>
+                    <option value="brand2">Brand 2</option>
+                    <option value="brand3">Brand 3</option>
+                </select>
 
-            <br><br>
+                <br><br>
 
-            <label for="series-types">Choose a series/type:</label>
-            <select id="series-types" name="series-types" required>
-                <option value="">--Select a series/type--</option>
-            </select>
+                <label for="series-types">Choose a series/type:</label>
+                <select id="series-types" name="series-types" required>
+                    <option value="">--Select a series/type--</option>
+                </select>
 
-            <br><br>
+                <br><br>
 
-            <label for="color-options">Choose a color:</label>
-            <select id="color-options" name="color-options">
-                <option value="">--Select a color--</option>
-            </select>
-            <br><br>
+                <label for="color-options">Choose a color:</label>
+                <select id="color-options" name="color-options">
+                    <option value="">--Select a color--</option>
+                </select>
+                <br><br>
 
+                <div class="button-container">
+                    <button type="submit">Next: Specific Info</button>
+                </div>
+            </form>
+        </div>
+        <h2>Specific Window Information</h2>
+        <div id="SpecificWindowInfo" class="subtabcontent">
+            <form th:action="@{/specific}" method="post" id="specificWindowForm">
+
+                <!--convert to drop down with number selections-->
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+                <br><br>
+
+                <!--see if there is a way to help with fractional measurements here-->
+                <label for="size">Size:</label>
+                <input type="text" id="size" name="size" required>
+                <br><br>
+
+                <!-- convert to drop down box with selections-->
+                <label for="windowType">Window Type:</label>
+                <input list="windowTypes" id="windowType" name="windowType" required>
+                <datalist id="windowTypes">
+                    <option value="Type 1">
+                    <option value="Type 2">
+                    <option value="Type 3">
+                        <!-- Add more options as needed -->
+                </datalist>
+                <br><br>
+
+                <label for="windowLocation">Window Location:</label>
+                <input list="windowLocations" id="windowLocation" name="windowLocation">
+                <datalist id="windowLocations">
+                    <!-- will need to add pop ups on a couple of locations for building code checks-->
+                    <!--convert to a selection box that can still be typed in if necessary-->
+                    <option value="Location 1">
+                    <option value="Location 2">
+                    <option value="Location 3">
+                        <!-- Add more options as needed -->
+                </datalist>
+                <br><br>
+
+                <div class="toggle-container">
+                    <label for="grids">Grids:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="grids" name="grids">
+                        <span class="slider"></span>
+                    </label>
+
+                    <label for="clear">Clear:</label>
+                    <!--will alter this in the future to incorperate obscure and tinted glass as dropdowns when no is selected-->
+                    <label class="switch">
+                        <input type="checkbox" id="clear" name="clear">
+                        <span class="slider"></span>
+                    </label>
+
+                    <label for="lowE">Low E:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="lowE" name="lowE">
+                        <span class="slider"></span>
+                    </label>
+
+                    <label for="tempered">Tempered:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="tempered" name="tempered">
+                        <span class="slider"></span>
+                    </label>
+
+                    <label for="obscured">Obscured:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="obscured" name="obscured">
+                        <span class="slider"></span>
+                    </label>
+
+                    <label for="tinted">Tinted:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="tinted" name="tinted">
+                        <span class="slider"></span>
+                    </label>
+
+                    <label for="argon">Argon:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="argon" name="argon">
+                        <span class="slider"></span>
+                    </label>
+                    <!--will need to add picture collection and special notes section to this-->
+                </div>
+                <br>
+
+                <div class="button-container">
+                    <button type="submit" name="action" value="next">Next Window</button>
+                    <button type="submit" name="action" value="review">Review Windows</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="WindowList" class="subtabcontent">
+            <h2>Review Windows</h2>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Series/Type</th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Size</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Grids</th>
+                    <th>Clear</th>
+                    <th>Low E</th>
+                    <th>Tempered</th>
+                    <th>Obscured</th>
+                    <th>Tinted</th>
+                    <th>Argon</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="window : ${windows}">
+                    <td th:text="${window.brand}"></td>
+                    <td th:text="${window.seriesType}"></td>
+                    <td th:text="${window.color}"></td>
+                    <td th:text="${window.quantity}"></td>
+                    <td th:text="${window.size}"></td>
+                    <td th:text="${window.type}"></td>
+                    <td th:text="${window.location}"></td>
+                    <td th:text="${window.grids ? 'Yes' : 'No'}"></td>
+                    <td th:text="${window.clear ? 'Yes' : 'No'}"></td>
+                    <td th:text="${window.lowE ? 'Yes' : 'No'}"></td>
+                    <td th:text="${window.tempered ? 'Yes' : 'No'}"></td>
+                    <td th:text="${window.obscure ? 'Yes' : 'No'}"></td>
+                    <td th:text="${window.tinted ? 'Yes' : 'No'}"></td>
+                    <td th:text="${window.argon ? 'Yes' : 'No'}"></td>
+                </tr>
+                </tbody>
+            </table>
             <div class="button-container">
-                <button type="submit">Next: Specific Info</button>
+                <button onclick="window.location.href='/'">Push Me?</button>
             </div>
-        </form>
-    </div>
-    <h2>Specific Window Information</h2>
-    <div id="SpecificWindowInfo" class="tabcontent">
-        <form th:action="@{/specific}" method="post" id="specificWindowForm">
-
-            <!--convert to drop down with number selections-->
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" required>
-            <br><br>
-
-            <!--see if there is a way to help with fractional measurements here-->
-            <label for="size">Size:</label>
-            <input type="text" id="size" name="size" required>
-            <br><br>
-
-            <!-- convert to drop down box with selections-->
-            <label for="windowType">Window Type:</label>
-            <input list="windowTypes" id="windowType" name="windowType" required>
-            <datalist id="windowTypes">
-                <option value="Type 1">
-                <option value="Type 2">
-                <option value="Type 3">
-                    <!-- Add more options as needed -->
-            </datalist>
-            <br><br>
-
-            <label for="windowLocation">Window Location:</label>
-            <input list="windowLocations" id="windowLocation" name="windowLocation">
-            <datalist id="windowLocations">
-                <!-- will need to add pop ups on a couple of locations for building code checks-->
-                <!--convert to a selection box that can still be typed in if necessary-->
-                <option value="Location 1">
-                <option value="Location 2">
-                <option value="Location 3">
-                    <!-- Add more options as needed -->
-            </datalist>
-            <br><br>
-
-            <div class="toggle-container">
-                <label for="grids">Grids:</label>
-                <label class="switch">
-                    <input type="checkbox" id="grids" name="grids">
-                    <span class="slider"></span>
-                </label>
-
-                <label for="clear">Clear:</label>
-                <!--will alter this in the future to incorperate obscure and tinted glass as dropdowns when no is selected-->
-                <label class="switch">
-                    <input type="checkbox" id="clear" name="clear">
-                    <span class="slider"></span>
-                </label>
-
-                <label for="lowE">Low E:</label>
-                <label class="switch">
-                    <input type="checkbox" id="lowE" name="lowE">
-                    <span class="slider"></span>
-                </label>
-
-                <label for="tempered">Tempered:</label>
-                <label class="switch">
-                    <input type="checkbox" id="tempered" name="tempered">
-                    <span class="slider"></span>
-                </label>
-
-                <label for="obscured">Obscured:</label>
-                <label class="switch">
-                    <input type="checkbox" id="obscured" name="obscured">
-                    <span class="slider"></span>
-                </label>
-
-                <label for="tinted">Tinted:</label>
-                <label class="switch">
-                    <input type="checkbox" id="tinted" name="tinted">
-                    <span class="slider"></span>
-                </label>
-
-                <label for="argon">Argon:</label>
-                <label class="switch">
-                    <input type="checkbox" id="argon" name="argon">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <br>
-
-            <div class="button-container">
-                <button type="submit" name="action" value="next">Next Window</button>
-                <button type="submit" name="action" value="review">Review Windows</button>
-            </div>
-        </form>
-    </div>
-
-    <div id="WindowList" class="tabcontent">
-        <h2>Review Windows</h2>
-        <table border="1">
-        <thead>
-        <tr>
-            <th>Brand</th>
-            <th>Series/Type</th>
-            <th>Color</th>
-            <th>Quantity</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th>Location</th>
-            <th>Grids</th>
-            <th>Clear</th>
-            <th>Low E</th>
-            <th>Tempered</th>
-            <th>Obscured</th>
-            <th>Tinted</th>
-            <th>Argon</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="window : ${windows}">
-            <td th:text="${window.brand}"></td>
-            <td th:text="${window.seriesType}"></td>
-            <td th:text="${window.color}"></td>
-            <td th:text="${window.quantity}"></td>
-            <td th:text="${window.size}"></td>
-            <td th:text="${window.type}"></td>
-            <td th:text="${window.location}"></td>
-            <td th:text="${window.grids ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.clear ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.lowE ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.tempered ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.obscure ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.tinted ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.argon ? 'Yes' : 'No'}"></td>
-        </tr>
-        </tbody>
-        </table>
-        <div class="burron-container">
-            <button onclick="window.location.href='/'"></button>
         </div>
     </div>
 </div>
