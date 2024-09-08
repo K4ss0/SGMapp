@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle dynamic brand/series/color selections
     const brandSelect = document.getElementById('window-brands');
     const seriesSelect = document.getElementById('series-types');
-    const colorSelect = document.getElementById('color-options');
+    const colorSelectExterior = document.getElementById('color-options-exterior');
+    const colorSelectInterior = document.getElementById('color-options-interior');
 
     const seriesOptions = {
         brand1: ['Series 1A', 'Series 1B', 'Series 1C'],
@@ -33,7 +34,15 @@ document.addEventListener('DOMContentLoaded', function () {
         brand3: ['Series 3A', 'Series 3B', 'Series 3C', 'Series 3D']
     };
 
-    const colorOptions = {
+    const colorOptionsExterior = {
+        'Series 1A': ['White', 'Beige'],
+        'Series 1B': ['White', 'Gray'],
+        'Series 2A': ['Green', 'Blue'],
+        'Series 3A': ['Red', 'Yellow'],
+        // Add more options as needed
+    };
+
+    const colorOptionsInterior = {
         'Series 1A': ['White', 'Beige'],
         'Series 1B': ['White', 'Gray'],
         'Series 2A': ['Green', 'Blue'],

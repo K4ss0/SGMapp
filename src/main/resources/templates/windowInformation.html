@@ -18,11 +18,11 @@
     <button class="subtablink" data-tab="SpecificWindowInfo">Specific Window Information</button>
     <button class="subtablink" data-tab="WindowList">Review Windows</button>
 </div>
-<!--This brand section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
 <div class="tab-content-container">
-<div id="GeneralInfo" class="subtabcontent">
-    <h1>General Information</h1>
-    <form>
+    <div id="GeneralInfo" class="subtabcontent">
+        <h1>General Information</h1>
+            <!--The brand section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
+        <form>
         <label for="window-brands">Choose a brand:</label>
         <select id="window-brands" name="window-brands" required>
             <option value="">--Select a brand--</option>
@@ -36,11 +36,29 @@
             <option value="">--Select a series--</option>
         </select>
         <br><br>
-        <label for="color-options">Choose a color:</label>
-        <select id="color-options" name="color-options">
-            <option value="">--Select a color--</option>
+        <label for="color-options-exterior">Exterior color:</label>
+        <select id="color-options-exterior" name="color-options-exterior">
+            <option value="">--Select exterior color--</option>
         </select>
         <br><br>
+        <label for="color-options-interior">Interor color:</label>
+        <select id="color-options-interior" name="color-options-interior">
+            <option value="">--Select interior color--</option>
+        </select>
+        <br><br>
+            <label for="frame-type">Frame type:</label>
+            <select id="frame-type" name="frame-type">
+                <option value="">--Select frame type--</option>
+                <option value="Nail on">Nail on</option>
+                <option value="Block">Block</option>
+                <option value="Flush fin">Flush fin</option>
+            </select>
+            <br><br>
+            <label for="hardware-color">Hardware color</label>
+            <select id="hardware-color" name="hardware-color">
+                <option value="">--Select hardware color--</option>
+            </select>
+            <br><br>
         <div class="button-container">
             <button type="submit">Next: Specific Info</button>
         </div>
@@ -146,7 +164,8 @@
         <tr>
             <th>Brand</th>
             <th>Series</th>
-            <th>Color</th>
+            <th>ColorExterior</th>
+            <th>ColorInterior</th>
             <th>Quantity</th>
             <th>Size</th>
             <th>Type</th>
@@ -164,7 +183,8 @@
         <tr th:each="window : ${windows}">
             <td th:text="${window.brand}"></td>
             <td th:text="${window.series}"></td>
-            <td th:text="${window.color}"></td>
+            <td th:text="${window.colorExterior}"></td>
+            <td th:text="${window.colorInterior}"></td>
             <td th:text="${window.quantity}"></td>
             <td th:text="${window.size}"></td>
             <td th:text="${window.type}"></td>
@@ -180,7 +200,7 @@
         </tbody>
     </table>
     <div class="button-container">
-        <button onclick="window.location.href='/'">Push Me?</button>
+        <button onclick="window.location.href='/'">Next</button>
     </div>
 </div>
 </div>

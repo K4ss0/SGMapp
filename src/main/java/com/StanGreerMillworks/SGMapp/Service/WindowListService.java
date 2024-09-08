@@ -30,7 +30,7 @@ public class WindowListService {
                 WindowListDTO item = new WindowListDTO();
                 item.setBrand(generalInfo.getBrand());
                 item.setSeries(generalInfo.getSeries());
-                item.setColor(generalInfo.getColor());
+                item.setColorInterior(generalInfo.getColorInterior());
                 // add additional items for window list here
                 item.setQuantity(specificInfo.getQuantity());
                 item.setSize(specificInfo.getSize());

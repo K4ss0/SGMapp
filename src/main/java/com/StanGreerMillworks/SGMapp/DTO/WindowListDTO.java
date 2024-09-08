@@ -3,7 +3,8 @@ package com.StanGreerMillworks.SGMapp.DTO;
 public class WindowListDTO {
     private String brand;
     private String series;
-    private String color;
+    private String colorInterior;
+    private String colorExterior;
 //if needed add more generalInfo fields here
     private int quantity;
     private String size;
@@ -35,12 +36,20 @@ public class WindowListDTO {
         this.series = series;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorExterior() {
+        return colorExterior;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorExterior(String colorExterior) {
+        this.colorExterior = colorExterior;
+    }
+
+    public String getColorInterior() {
+        return colorInterior;
+    }
+
+    public void setColorInterior(String colorInterior) {
+        this.colorInterior = colorInterior;
     }
 
     public int getQuantity() {

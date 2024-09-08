@@ -3,14 +3,16 @@ package com.StanGreerMillworks.SGMapp.domain;
 import jakarta.persistence.*;
 
 @Entity
-public class GeneralWindowInfo {
+public class
+GeneralWindowInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long windowInfoId;
 
     private String brand;
     private String series;
-    private String color;
+    private String colorExterior;
+    private String colorInterior;
     private String frameType;
     private String hardwareFinish;
 
@@ -42,12 +44,20 @@ public class GeneralWindowInfo {
         this.series = series;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorExterior() {
+        return colorExterior;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorExterior(String colorExterior) {
+        this.colorExterior = colorExterior;
+    }
+
+    public String getColorInterior() {
+        return colorInterior;
+    }
+
+    public void setColorInterior(String colorInterior) {
+        this.colorInterior = colorInterior;
     }
 
     public String getFrameType() {
