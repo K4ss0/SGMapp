@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Labor and Review</title>
+    <link rel="stylesheet" href="/windowInfo.css">
+</head>
+<body>
+<script src="/laborAndReview.js"></script>
+<h1>Customer</h1>
+<div class="customer-info">
+    <h2>Customer Info</h2>
+    <p>Takeoff Number <span th:text="${takeoffNumber}"></span></p>
+    <p>Cutomer Info: <span th:text="${customerName}"></span></p>
+</div>
+<div class="sub-tab-container">
+    <button class="subtablink" data-tab="Labor">Labor</button>
+    <button class="subtablink" data-tab="JobNotes">Job Notes</button>
+    <button class="subtablink" data-tab="FinalReview">Final Review</button>
+</div>
+<div class="tab-content-container">
+    <div id="Labor" class="subtabcontent">
+        <h1>Labor</h1>
+        <form>
+            <label for="installers">Number of Installers:</label>
+            <input type="number" id="installers" name="installers" min="1" required>
+            <br><br>
+
+            <label for="hours">Hours per Installer:</label>
+            <input type="number" id="hours" name="hours" min="1" required>
+            <br><br>
+
+            <label for="totalHours">Total Hours:</label>
+            <input type="number" id="totalHours" name="totalHours" min="1" required>
+            <br><br>
+
+            <div class="button-container">
+                <button type="submit">Next: Job Notes</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="job-notes-section" class="subtabcontent">
+        <h2>Job Notes</h2>
+        <form th:action="@{/jobNotes}" method="post" id="job-notes-form">
+            <label for="jobNotes">Job Notes</label>
+            <input type="text" id="jobNotes" name="jobNotes">
+            <br><br>
+
+            <div class="button-container">
+                <button type="submit" name="action" value="next">Next: Final Review</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="final-review-section" class="subtabcontent">
+        <h2>Final Review</h2>
+        <div id="customer-info">
+            <h3>
+                Customer Information
+                <button type="button" onclick="goToTab(customerInfoTab)">Edit</button>
+            </h3>
+            <p><strong>Name:</strong><span th:text="${customer.name}"></span></p>
+            <p><strong>Phone:</strong><span th:text="${customer.phone}"></span></p>
+            <p><strong>Email:</strong><span th:text="${customer.email}"></span></p>
+        </div>
+
+        <div id="general-info">
+            <h3>
+                General Information
+                <button type="button" onclick="goToTab(generalInfoTab)">Edit</button>
+            </h3>
+            <p><strong>Brand:</strong><span th:text="${generalInfo.brand}"></span></p>
+            <p><strong>Series:</strong><span th:text="${generalInfo.series}"></span></p>
+            <p><strong>Exterior Color:</strong><span th:text="${generalInfo.exteriorColor}"></span></p>
+            <p><strong>Interior Color:</strong><span th:text="${generalInfo.interiorColor}"></span></p>
+        </div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Series</th>
+                <th>ColorExterior</th>
+                <th>ColorInterior</th>
+                <th>Quantity</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Grids</th>
+                <th>Clear</th>
+                <th>Low E</th>
+                <th>Tempered</th>
+                <th>Obscured</th>
+                <th>Tinted</th>
+                <th>Argon</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="window, iterStat : ${windows}">
+                <td th:text="${window.brand}"></td>
+                <td th:text="${window.series}"></td>
+                <td th:text="${window.colorExterior}"></td>
+                <td th:text="${window.colorInterior}"></td>
+                <td th:text="${window.quantity}"></td>
+                <td th:text="${window.size}"></td>
+                <td th:text="${window.type}"></td>
+                <td th:text="${window.location}"></td>
+                <td th:text="${window.grids ? 'Yes' : 'No'}"></td>
+                <td th:text="${window.clear ? 'Yes' : 'No'}"></td>
+                <td th:text="${window.lowE ? 'Yes' : 'No'}"></td>
+                <td th:text="${window.tempered ? 'Yes' : 'No'}"></td>
+                <td th:text="${window.obscured ? 'Yes' : 'No'}"></td>
+                <td th:text="${window.tinted ? 'Yes' : 'No'}"></td>
+                <td th:text="${window.argon ? 'Yes' : 'No'}"></td>
+                <td>
+                    <button type="button" onclick="editWindow([[${iterStat.index}]])">Edit</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div id="labor-info">
+            <h3>Labor</h3>
+            <p><strong>Number of Installers:</strong><span th:text="${labor.installers}"></span></p>
+            <p><strong>Hours per Installer:</strong><span th:text="${labor.hours}"></span></p>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='/'">Upload</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

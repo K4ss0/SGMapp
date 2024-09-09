@@ -47,7 +47,7 @@ function updateProducts() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
     const jobTypeSelect = document.getElementById('jobType');
     if (jobTypeSelect) {
@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function searchCustomer() {
-    const phone1 = document.getElementById('customerPhone').value;
-    const phone2 = document.getElementById('customerPhone').value;
+    const phone1 = document.getElementById('customerPhone1').value;
+    const phone2 = document.getElementById('customerPhone2').value;
 
     fetch(`/api/customer/search?phoneNumber=${phone1}`)
-        .then(respones =>{
-            if (!response.ok){
+        .then(respones => {
+            if (!response.ok) {
                 return fetch('/api/customer/search?phoneNumber=${phone2}');
             }
             return response;
@@ -74,7 +74,6 @@ function searchCustomer() {
         .then(response => response.json())
         .then(data => {
             if (data) {
-                // Customer found, populate fields
                 document.getElementById('customerFirstName').value = data.firstName;
                 document.getElementById('customerLastName').value = data.lastName;
                 document.getElementById('customerEmail').value = data.email;
@@ -83,27 +82,31 @@ function searchCustomer() {
                 document.getElementById('customerState').value = data.state;
                 document.getElementById('customerZip').value = data.zip;
             } else {
-                // Customer not found
                 alert('Customer not found. Please enter new customer information.');
-                // Clear fields except phone number
-                document.getElementById('customerFirstName').value = '';
-                document.getElementById('customerLastName').value = '';
-                document.getElementById('customerEmail').value = '';
-                document.getElementById('customerAddress').value = '';
-                document.getElementById('customerCity').value = '';
-                document.getElementById('customerState').value = '';
-                document.getElementById('customerZip').value = '';
+                clearCustomerFields();
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('An error occurred while searching for the customer.');
+            alert('An error occured while searching for the customer');
+            clearCustomerFields();
         });
 }
 
-function formatPhoneNumber(input){
-    let value = input.value.replace(/\D/g,'');
-    if (value.length > 3&& value.length <= 6){
+function clearCustomerFields() {
+    document.getElementById('customerFirstName').value = '';
+    document.getElementById('customerLastName').value = '';
+    document.getElementById('customerEmail').value = '';
+    document.getElementById('customerAddress').value = '';
+    document.getElementById('customerCity').value = '';
+    document.getElementById('customerState').value = '';
+    document.getElementById('customerZip').value = '';
+}
+
+
+function formatPhoneNumber(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length > 3 && value.length <= 6) {
         value = value.replace(/^(\d{3)(\d+)/, '$1-$2');
     } else if (value.length > 6) {
         value = value.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3');

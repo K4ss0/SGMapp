@@ -21,7 +21,10 @@
 <div class="tab-content-container">
     <div id="GeneralInfo" class="subtabcontent">
         <h1>General Information</h1>
-            <!--The brand section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
+        <!--The brand section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
+        <!--<select id="window-brands" name="window-brands" th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}" required>
+            <option value="">--Select a brand--</option>
+        </select>-->
         <form>
         <label for="window-brands">Choose a brand:</label>
         <select id="window-brands" name="window-brands" required>
@@ -193,14 +196,14 @@
             <td th:text="${window.clear ? 'Yes' : 'No'}"></td>
             <td th:text="${window.lowE ? 'Yes' : 'No'}"></td>
             <td th:text="${window.tempered ? 'Yes' : 'No'}"></td>
-            <td th:text="${window.obscure ? 'Yes' : 'No'}"></td>
+            <td th:text="${window.obscured ? 'Yes' : 'No'}"></td>
             <td th:text="${window.tinted ? 'Yes' : 'No'}"></td>
             <td th:text="${window.argon ? 'Yes' : 'No'}"></td>
         </tr>
         </tbody>
     </table>
     <div class="button-container">
-        <button onclick="window.location.href='/'">Next</button>
+        <button onclick="window.location.href='/labor-review'">Next</button>
     </div>
 </div>
 </div>

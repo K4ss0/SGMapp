@@ -45,4 +45,5 @@ public class WindowInformationController {
         SpecificWindowInfo savedInfo = specificWindowInfoService.saveSpecificWindowInfo(specificInfo);
         return "redirect:/window-information";
     }
+
 }
