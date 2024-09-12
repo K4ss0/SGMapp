@@ -3,9 +3,8 @@ package com.StanGreerMillworks.SGMapp.domain;
 import jakarta.persistence.*;
 
 import java.util.List;
-
 @Entity
-public class Customer {
+public class CustomerInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +20,7 @@ public class Customer {
     private String state;
     private String zip;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customerInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TakeoffForm> takeoffForms;
 
     public Long getId() {
@@ -120,5 +119,3 @@ public class Customer {
         this.takeoffForms = takeoffForms;
     }
 }
-
-

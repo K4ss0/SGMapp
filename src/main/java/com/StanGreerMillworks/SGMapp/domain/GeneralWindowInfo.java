@@ -3,6 +3,7 @@ package com.StanGreerMillworks.SGMapp.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "general_window_info")
 public class
 GeneralWindowInfo {
     @Id

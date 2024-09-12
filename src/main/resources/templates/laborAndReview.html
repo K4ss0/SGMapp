@@ -8,7 +8,7 @@
 <body>
 <script src="/laborAndReview.js"></script>
 <h1>Customer</h1>
-<div class="customer-info">
+<div class="customerInfo-info">
     <h2>Customer Info</h2>
     <p>Takeoff Number <span th:text="${takeoffNumber}"></span></p>
     <p>Cutomer Info: <span th:text="${customerName}"></span></p>
@@ -56,14 +56,14 @@
 
     <div id="final-review-section" class="subtabcontent">
         <h2>Final Review</h2>
-        <div id="customer-info">
+        <div id="customerInfo-info">
             <h3>
                 Customer Information
                 <button type="button" onclick="goToTab(customerInfoTab)">Edit</button>
             </h3>
-            <p><strong>Name:</strong><span th:text="${customer.name}"></span></p>
-            <p><strong>Phone:</strong><span th:text="${customer.phone}"></span></p>
-            <p><strong>Email:</strong><span th:text="${customer.email}"></span></p>
+            <p><strong>Name:</strong><span th:text="${customerInfo.name}"></span></p>
+            <p><strong>Phone:</strong><span th:text="${customerInfo.phone}"></span></p>
+            <p><strong>Email:</strong><span th:text="${customerInfo.email}"></span></p>
         </div>
 
         <div id="general-window-info">

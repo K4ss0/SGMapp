@@ -14,7 +14,7 @@ public class TakeoffForm {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private CustomerInfo customerInfo;
 
     private LocalDateTime createdAt;
 
@@ -37,12 +37,12 @@ public class TakeoffForm {
         this.takeoffId = takeoffId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public CustomerInfo getCustomer() {
+        return customerInfo;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(CustomerInfo customerInfo) {
+        this.customerInfo = customerInfo;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -51,6 +51,14 @@ public class TakeoffForm {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getFormType() {
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
     }
 
     public GeneralWindowInfo getGeneralWindowInfo() {

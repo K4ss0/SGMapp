@@ -1,5 +1,4 @@
 package com.StanGreerMillworks.SGMapp.DTO;
-
 public class CustomerDTO {
 
     private String Phone1;

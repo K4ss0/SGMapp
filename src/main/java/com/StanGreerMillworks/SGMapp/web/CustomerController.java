@@ -2,10 +2,7 @@ package com.StanGreerMillworks.SGMapp.web;
 
 import com.StanGreerMillworks.SGMapp.DTO.CustomerDTO;
 import com.StanGreerMillworks.SGMapp.Service.CustomerService;
-import com.StanGreerMillworks.SGMapp.domain.Customer;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
