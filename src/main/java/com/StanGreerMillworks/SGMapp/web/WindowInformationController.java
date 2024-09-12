@@ -34,15 +34,15 @@ public class WindowInformationController {
         return "windowInformation";
     }
 
-    @PostMapping("/save-general-info")
-    public String saveGeneralWindowInfo(@ModelAttribute GeneralWindowInfo generalInfo){
-        generalWindowInfoService.saveGeneralWindowInfo(generalInfo);
+    @PostMapping("/save-general-window-info")
+    public String saveGeneralWindowInfo(@ModelAttribute GeneralWindowInfo generalWindowInfo){
+        generalWindowInfoService.saveGeneralWindowInfo(generalWindowInfo);
         return "redirect:/window-information";
     }
 
-    @PostMapping ("/save-specific-info")
-    String saveSpecificWindowInfo(@ModelAttribute SpecificWindowInfo specificInfo){
-        SpecificWindowInfo savedInfo = specificWindowInfoService.saveSpecificWindowInfo(specificInfo);
+    @PostMapping ("/save-specific-window-info")
+    String saveSpecificWindowInfo(@ModelAttribute SpecificWindowInfo specificWindowInfo){
+        SpecificWindowInfo savedInfo = specificWindowInfoService.saveSpecificWindowInfo(specificWindowInfo);
         return "redirect:/window-information";
     }
 

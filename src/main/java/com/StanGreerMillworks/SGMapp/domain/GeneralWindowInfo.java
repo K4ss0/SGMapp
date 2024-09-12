@@ -7,7 +7,7 @@ public class
 GeneralWindowInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long windowInfoId;
+    private Long generalWindowInfoId;
 
     private String brand;
     private String series;
@@ -20,12 +20,12 @@ GeneralWindowInfo {
     @JoinColumn(name = "takeoff_id")
     private TakeoffForm takeoffForm;
 
-    public Long getWindowInfoId() {
-        return windowInfoId;
+    public Long getGeneralWindowInfoId() {
+        return generalWindowInfoId;
     }
 
-    public void setWindowInfoId(Long windowInfoId) {
-        this.windowInfoId = windowInfoId;
+    public void setGeneralWindowInfoId(Long generalWindowInfoId) {
+        this.generalWindowInfoId = generalWindowInfoId;
     }
 
     public String getBrand() {

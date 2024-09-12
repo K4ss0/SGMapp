@@ -3,6 +3,7 @@ package com.StanGreerMillworks.SGMapp.repository;
 import com.StanGreerMillworks.SGMapp.domain.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Optional;
@@ -17,6 +18,7 @@ public class CustomerRepositoryTest {
     private CustomerRepository customerRepository;
 
     @Test
+    @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
     public void testSaveCustomer() {
         Customer customer = new Customer();
         customer.setFirstName("Test");
