@@ -14,12 +14,12 @@
     <p>Cutomer Info: <span th:text="${customerName}"><!--dynamically insert customer name--></span></p>
 </div>
 <div class="sub-tab-container">
-    <button class="subtablink" data-tab="Generalinfo">General Window Information</button>
+    <button class="subtablink" data-tab="GeneraWindowInfo">General Window Information</button>
     <button class="subtablink" data-tab="SpecificWindowInfo">Specific Window Information</button>
     <button class="subtablink" data-tab="WindowList">Review Windows</button>
 </div>
 <div class="tab-content-container">
-    <div id="GeneralInfo" class="subtabcontent">
+    <div id="GeneralWindowInfo" class="subtabcontent">
         <h1>General Information</h1>
         <!--The brand section will need to be converted to a dynamic version where it can be updated from the app later by an administrator-->
         <!--<select id="window-brands" name="window-brands" th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}" required>
@@ -87,10 +87,10 @@
         <label for="windowType">Window Type:</label>
         <input list="windowTypes" id="windowType" name="windowType" required>
         <datalist id="windowTypes">
-            <option value="Type 1">
-            <option value="Type 2">
-            <option value="Type 3">
-                <!-- Add more options as needed -->
+            <option value="XO">
+            <option value="OX">
+            <option value="PW">
+                <!-- Add remaining -->
         </datalist>
         <br><br>
 
@@ -99,10 +99,10 @@
         <datalist id="windowLocations">
             <!-- will need to add pop ups on a couple of locations for building code checks-->
             <!--convert to a selection box that can still be typed in if necessary-->
-            <option value="Location 1">
-            <option value="Location 2">
-            <option value="Location 3">
-                <!-- Add more options as needed -->
+            <option value="Living room">
+            <option value="Master Bed">
+            <option value="Master Bath">
+                <!-- Add more options -->
         </datalist>
         <br><br>
 
@@ -162,13 +162,16 @@
 
 <div id="WindowList" class="subtabcontent">
     <h2>Review Windows</h2>
-    <table border="1">
+    <div class="general-window-info">
+        <p>Brand: <span th:text="${selectedBrand}"></span></p>
+        <p>Series: <span th:text="${selectedSeries}"></span></p>
+        <p>Color (Exterior/Interior): <span th:text="${colorExterior}"></span>/<span th:text="${colorInterior}"></span></p>
+        <p>Frame Type: <span th:text="${frameType}"></span></p>
+        <p>Hardware color: <span th:text="${hardwareColor}"></span> </p>
+    </div>
+    <div>
         <thead>
         <tr>
-            <th>Brand</th>
-            <th>Series</th>
-            <th>ColorExterior</th>
-            <th>ColorInterior</th>
             <th>Quantity</th>
             <th>Size</th>
             <th>Type</th>
@@ -184,10 +187,6 @@
         </thead>
         <tbody>
         <tr th:each="window : ${windows}">
-            <td th:text="${window.brand}"></td>
-            <td th:text="${window.series}"></td>
-            <td th:text="${window.colorExterior}"></td>
-            <td th:text="${window.colorInterior}"></td>
             <td th:text="${window.quantity}"></td>
             <td th:text="${window.size}"></td>
             <td th:text="${window.type}"></td>
@@ -202,6 +201,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
     <div class="button-container">
         <button onclick="window.location.href='/labor-review'">Next</button>
     </div>

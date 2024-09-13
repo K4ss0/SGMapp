@@ -11,7 +11,8 @@
 <div class="customer-info">
     <h2>Customer Info</h2>
     <p>Takeoff Number <span th:text="${takeoffNumber}"></span></p>
-    <p>Cutomer Info: <span th:text="${customerName}"></span></p>
+    <p>Cutomer Info: <span th:text="${customer.FirstName + ' ' + customer.lastName}"></span></p>
+    <p>Phone: <span th:text="${customer.Phone1}"></span></p>
 </div>
 <div class="sub-tab-container">
     <button class="subtablink" data-tab="Labor">Labor</button>
@@ -66,23 +67,19 @@
             <p><strong>Email:</strong><span th:text="${customer.email}"></span></p>
         </div>
 
-        <div id="general-info">
+        <div id="general-window-info">
             <h3>
                 General Information
                 <button type="button" onclick="goToTab(generalInfoTab)">Edit</button>
             </h3>
             <p><strong>Brand:</strong><span th:text="${generalInfo.brand}"></span></p>
             <p><strong>Series:</strong><span th:text="${generalInfo.series}"></span></p>
-            <p><strong>Exterior Color:</strong><span th:text="${generalInfo.exteriorColor}"></span></p>
-            <p><strong>Interior Color:</strong><span th:text="${generalInfo.interiorColor}"></span></p>
+            <p><strong>Color (Exterior/Interior):</strong> <span th:text="${colorExterior}"></span>/<span th:text="${colorInterior}"></span></p>
+            <p><strong>Frame Type:</strong> <span th:text="${frameType}"></span></p>
+            <p><strong>Hardware color:</strong> <span th:text="${hardwareColor}"></span> </p>
         </div>
-        <table border="1">
             <thead>
             <tr>
-                <th>Brand</th>
-                <th>Series</th>
-                <th>ColorExterior</th>
-                <th>ColorInterior</th>
                 <th>Quantity</th>
                 <th>Size</th>
                 <th>Type</th>
@@ -99,10 +96,6 @@
             </thead>
             <tbody>
             <tr th:each="window, iterStat : ${windows}">
-                <td th:text="${window.brand}"></td>
-                <td th:text="${window.series}"></td>
-                <td th:text="${window.colorExterior}"></td>
-                <td th:text="${window.colorInterior}"></td>
                 <td th:text="${window.quantity}"></td>
                 <td th:text="${window.size}"></td>
                 <td th:text="${window.type}"></td>
