@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LaborAndReviewController {
 
-    @GetMapping("/labor-review")
+    @GetMapping("/labor-and-review")
     public String showLaborAndReview(Model model) {
 
         return "laborAndReview";
